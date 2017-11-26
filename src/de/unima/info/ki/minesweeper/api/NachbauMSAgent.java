@@ -125,8 +125,8 @@ public class NachbauMSAgent extends MSAgent {
     int failedTimes = 0;
 
     // get borders of field & initialize
-    this.discoveredFields = this.initializeBooleanList(discoveredFields, rows, cols);
-    this.discoveredMines = this.initializeBooleanList(discoveredMines, rows, cols);
+    this.discoveredFields = this.initializeBooleanList(discoveredFields, cols,rows);
+    this.discoveredMines = this.initializeBooleanList(discoveredMines, cols,rows);
 
     // already moved?
     if (!alreadyMoved) {

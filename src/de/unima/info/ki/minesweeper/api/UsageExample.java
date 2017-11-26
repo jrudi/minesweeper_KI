@@ -40,7 +40,7 @@ public class UsageExample {
 		for (int i = 0; i < iterations; i++) {
 
 			i++;
-			MSField f = new MSField("fields/"+fields[16]);
+			MSField f = new MSField("fields/"+fields[23]);
 		//	RandomMSAgent agent = new RandomMSAgent();
 			NachbauMSAgent agent = new NachbauMSAgent();
 			agent.setField(f);
