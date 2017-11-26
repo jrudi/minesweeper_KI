@@ -6,7 +6,7 @@ public class UsageExample {
 	public static void main(String[] args) {
 
 		// use smaller numbers for larger fields 
-		int iterations = 10000;
+		int iterations = 10;
 		
 		// if you want to iterate over all of them, this might help
 		String[] fields = {
@@ -40,8 +40,9 @@ public class UsageExample {
 		for (int i = 0; i < iterations; i++) {
 
 			i++;
-			MSField f = new MSField("fields/baby3-5x5-1.txt");
-			RandomMSAgent agent = new RandomMSAgent();
+			MSField f = new MSField("fields/"+fields[16]);
+		//	RandomMSAgent agent = new RandomMSAgent();
+			NachbauMSAgent agent = new NachbauMSAgent();
 			agent.setField(f);
 			// to see what happens in the first iteration
 			if (i == 1) agent.activateDisplay();
