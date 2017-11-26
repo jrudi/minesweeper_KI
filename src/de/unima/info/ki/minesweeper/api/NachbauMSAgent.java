@@ -18,7 +18,7 @@ public class NachbauMSAgent extends MSAgent {
 
   MSSATSolver solver = new MSSATSolver();
 
-  private ArrayList<Long> timeList = new ArrayList<Long>();
+ 
 
 
   private boolean positionExists(int x, int y) {
@@ -182,11 +182,10 @@ public class NachbauMSAgent extends MSAgent {
         }
       }
       // everything is dark.. do random move
-      long time = 0;
       Random rng = new Random();
       if (darkness) {
         while (true) {
-          time = System.currentTimeMillis();
+         
           if (this.field.solved()) {
             break;
           }
@@ -196,7 +195,7 @@ public class NachbauMSAgent extends MSAgent {
             fieldInformation = this.uncoverField(x + 1, y + 1);
             break;
           }
-          timeList.add(System.currentTimeMillis() - time);
+      
         }
       }
 
@@ -205,6 +204,7 @@ public class NachbauMSAgent extends MSAgent {
 
     if (field.solved()) {
       failedTimes = 0;
+      
       return true;
     } else {
       failedTimes++;

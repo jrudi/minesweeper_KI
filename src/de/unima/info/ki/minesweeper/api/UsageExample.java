@@ -18,9 +18,10 @@ public class UsageExample {
         "profi2-30x16-99.txt", "profi3-30x16-99.txt", "profi4-30x16-99.txt", "profi5-30x16-99.txt"};
     for (int fulltest = 0; fulltest < fields.length; fulltest++) {
       int success = 0;
-      for (int i = 0; i < iterations; i++) {
-
-        i++;
+     
+      long timeSum = 0;
+      for (int i = 0; i < iterations; i++) {    
+        System.out.print(i);
         MSField f = new MSField("fields/" + fields[fulltest]);
         // RandomMSAgent agent = new RandomMSAgent();
         NachbauMSAgent agent = new NachbauMSAgent();
@@ -30,14 +31,18 @@ public class UsageExample {
           agent.activateDisplay();
         else
           agent.deactivateDisplay();
-
+        long startTime =System.currentTimeMillis();
         boolean solved = agent.solve();
         if (solved) {
+          timeSum+=System.currentTimeMillis()-startTime;      
           success++;
         }
       }
       double rate = (double) success / (double) iterations;
+      long time = timeSum/iterations;
+      System.out.println();
       System.out.println("Erfolgsquote von " + fields[fulltest] + ": " + rate);
+      System.out.println("In durchschnittlich" + time/1000 +" Sekunden.");
 
     }
 
