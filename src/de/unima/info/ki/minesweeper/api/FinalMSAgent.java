@@ -5,7 +5,7 @@ import java.util.Random;
 
 import de.unima.info.ki.minesweeper.solver.MSSATSolver;
 
-public class NachbauMSAgent extends MSAgent {
+public class FinalMSAgent extends MSAgent {
 
   private boolean displayActivated = false;
 
@@ -133,8 +133,8 @@ public class NachbauMSAgent extends MSAgent {
       x = 0;
       y = 0;
     } else {
-      x = failedTimes; // todo
-      y = failedTimes;// todo
+      x = failedTimes;
+      y = failedTimes;
     }
     // initialize KnowledgeBase
     this.initializeKnowledgeBase();
@@ -276,8 +276,8 @@ public class NachbauMSAgent extends MSAgent {
       return list;
     }
 
-    private boolean emptyFieldIsPossible(int bombsToAdd, int index) {
-      return index < (MAX_Neighbour_Count - bombsToAdd);
+    private boolean emptyFieldIsPossible(int minesToAdd, int index) {
+      return index < (MAX_Neighbour_Count - minesToAdd);
     }
 
   }

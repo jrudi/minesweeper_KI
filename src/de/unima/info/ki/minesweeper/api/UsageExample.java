@@ -24,7 +24,7 @@ public class UsageExample {
         System.out.print(i);
         MSField f = new MSField("fields/" + fields[fulltest]);
         // RandomMSAgent agent = new RandomMSAgent();
-        NachbauMSAgent agent = new NachbauMSAgent();
+        FinalMSAgent agent = new FinalMSAgent();
         agent.setField(f);
         // to see what happens in the first iteration
         if (i == 1)
