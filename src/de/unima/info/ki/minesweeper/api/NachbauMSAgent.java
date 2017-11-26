@@ -146,7 +146,6 @@ public class NachbauMSAgent extends MSAgent {
     ArrayList<int[]> clickList, mineList;
 
     while (fieldInformation >= 0 && !this.field.solved()) {
-      System.out.println("Mainloop");
       // reset boolean every loop
       discovered = false;
       foundMine = false;
@@ -164,7 +163,6 @@ public class NachbauMSAgent extends MSAgent {
             if (solver.solve() == false) {
               fieldInformation = this.uncoverField(x, y);
               discovered = true;
-              System.out.println("Information: " + fieldInformation);
             }
 
             mineList = (ArrayList<int[]>) knowledgeBase.clone();
@@ -175,14 +173,12 @@ public class NachbauMSAgent extends MSAgent {
               knowledgeBase.add(new int[] {-getFieldNumber(x, y)});
               discoveredMines[x - 1][y - 1] = true;
               foundMine = true;
-              System.out.println("Mine");
             }
           }
         }
 
         if (x == discoveredFields.length && !discovered && !foundMine) {
           darkness = true;
-          System.out.println("Dark in here");
         }
       }
       // everything is dark.. do random move
@@ -197,7 +193,6 @@ public class NachbauMSAgent extends MSAgent {
           x = rng.nextInt(rows);
           y = rng.nextInt(cols);
           if (!discoveredFields[x][y] && !discoveredMines[x][y]) {
-            System.out.println("uncover Random field");
             fieldInformation = this.uncoverField(x + 1, y + 1);
             break;
           }
@@ -209,12 +204,9 @@ public class NachbauMSAgent extends MSAgent {
 
 
     if (field.solved()) {
-      System.out.println("Feddisch");
       failedTimes = 0;
       return true;
     } else {
-
-      System.out.println("Garnischfäd");
       failedTimes++;
       alreadyMoved = true;
       return false;
