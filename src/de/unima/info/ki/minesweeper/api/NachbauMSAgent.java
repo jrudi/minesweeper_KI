@@ -234,24 +234,24 @@ public class NachbauMSAgent extends MSAgent {
     public ClauseBuilder(int[] list, int bombsToAdd) {
       this.mineList = new ArrayList<int[]>();
       this.neighbourList = list;
-      buildBombAsList(new int[list.length], bombsToAdd, (8 - list.length));
+      createMineList(new int[list.length], bombsToAdd, (8 - list.length));
     }
 
     public ArrayList<int[]> getBombLists() {
       return this.mineList;
     }
 
-    public void buildBombAsList(int[] list, int bombsToAdd, int index) {
+    public void createMineList(int[] list, int bombsToAdd, int index) {
       if (bombsToAdd <= (8 - index)) {
         if (bombsToAdd == 0) {
 
           mineList.add(finishStringWithEmptyFields(list));
 
         } else {
-          buildBombAsList(stringWithBombAtEnd(list.clone(), index), bombsToAdd - 1, index + 1);
+          createMineList(stringWithBombAtEnd(list.clone(), index), bombsToAdd - 1, index + 1);
 
           if (emptyFieldIsPossible(bombsToAdd, index)) {
-            buildBombAsList(stringWithEmptyFieldAtEnd(list.clone(), index), bombsToAdd, index + 1);
+            createMineList(stringWithEmptyFieldAtEnd(list.clone(), index), bombsToAdd, index + 1);
           }
         }
       }
