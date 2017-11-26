@@ -16,7 +16,7 @@ public class UsageExample {
         "fortgeschrittene2-16x16-40.txt", "fortgeschrittene3-16x16-40.txt",
         "fortgeschrittene4-16x16-40.txt", "fortgeschrittene5-16x16-40.txt", "profi1-30x16-99.txt",
         "profi2-30x16-99.txt", "profi3-30x16-99.txt", "profi4-30x16-99.txt", "profi5-30x16-99.txt"};
-    for (int fulltest = fields.length-2; fulltest >= 0; fulltest--) {
+    for (int fulltest = fields.length-11; fulltest >= 0; fulltest--) {
       int success = 0;
      
       long timeSum = 0;
@@ -40,9 +40,8 @@ public class UsageExample {
       }
       double rate = (double) success / (double) iterations;
       long time = timeSum/iterations;
-      System.out.println();
-      System.out.println("Erfolgsquote von " + fields[fulltest] + ": " + rate);
-      System.out.println("In durchschnittlich" + time +" Millisekunden.");
+
+      System.out.println(" | " + fields[fulltest].split("-")[0] + " | " + rate + " | " + time);
 
     }
 
