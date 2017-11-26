@@ -189,8 +189,8 @@ public class NachbauMSAgent extends MSAgent {
           if (this.field.solved()) {
             break;
           }
-          x = rng.nextInt(rows);
-          y = rng.nextInt(cols);
+          x = rng.nextInt(cols);
+          y = rng.nextInt(rows);
           if (!discoveredFields[x][y] && !discoveredMines[x][y]) {
             fieldInformation = this.uncoverField(x + 1, y + 1);
             break;
