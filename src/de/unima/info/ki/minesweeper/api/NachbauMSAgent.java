@@ -109,7 +109,7 @@ public class NachbauMSAgent extends MSAgent {
     for (int i = 0; i <= 8; i++) {
       if (i != value) {
         bcb = new ClauseBuilder(neighbours, i);
-        knowledgeBase.addAll(bcb.getBombLists());
+        knowledgeBase.addAll(bcb.getMineLists());
       }
     }
 
@@ -231,27 +231,27 @@ public class NachbauMSAgent extends MSAgent {
     private int[] neighbourList = null;
     private final int MAX_Neighbour_Count = 8;
 
-    public ClauseBuilder(int[] list, int bombsToAdd) {
+    public ClauseBuilder(int[] list, int minesToAdd) {
       this.mineList = new ArrayList<int[]>();
       this.neighbourList = list;
-      createMineList(new int[list.length], bombsToAdd, (8 - list.length));
+      createMineList(new int[list.length], minesToAdd, (8 - list.length));
     }
 
-    public ArrayList<int[]> getBombLists() {
+    public ArrayList<int[]> getMineLists() {
       return this.mineList;
     }
 
-    public void createMineList(int[] list, int bombsToAdd, int index) {
-      if (bombsToAdd <= (8 - index)) {
-        if (bombsToAdd == 0) {
+    public void createMineList(int[] list, int minesToAdd, int index) {
+      if (minesToAdd <= (8 - index)) {
+        if (minesToAdd == 0) {
 
           mineList.add(finishStringWithEmptyFields(list));
 
         } else {
-          createMineList(stringWithBombAtEnd(list.clone(), index), bombsToAdd - 1, index + 1);
+          createMineList(stringWithMineAtEnd(list.clone(), index), minesToAdd - 1, index + 1);
 
-          if (emptyFieldIsPossible(bombsToAdd, index)) {
-            createMineList(stringWithEmptyFieldAtEnd(list.clone(), index), bombsToAdd, index + 1);
+          if (emptyFieldIsPossible(minesToAdd, index)) {
+            createMineList(stringWithEmptyFieldAtEnd(list.clone(), index), minesToAdd, index + 1);
           }
         }
       }
@@ -271,7 +271,7 @@ public class NachbauMSAgent extends MSAgent {
       return list;
     }
 
-    private int[] stringWithBombAtEnd(int[] list, int index) {
+    private int[] stringWithMineAtEnd(int[] list, int index) {
       list[index - (8 - list.length)] = neighbourList[index - (8 - list.length)];
       return list;
     }
